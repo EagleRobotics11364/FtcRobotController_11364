@@ -4,7 +4,6 @@ import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 
-import org.firstinspires.ftc.teamcode.library.functions.FunctionalExtensionsKt;
 
 import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.RUN_TO_POSITION;
 import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.RUN_WITHOUT_ENCODER;
@@ -62,9 +61,10 @@ public class HolonomicImpl implements Holonomic {
      * @param z rotation power
      */
     private void run(double x, double y, double z) {
-        x = FunctionalExtensionsKt.rangeClip(x, -1, 1);
-        y = FunctionalExtensionsKt.rangeClip(y, -1, 1);
-        z = FunctionalExtensionsKt.rangeClip(z, -1, 1);
+//       Edited for 11364
+//        x = FunctionalExtensionsKt.rangeClip(x, -1, 1);
+//        y = FunctionalExtensionsKt.rangeClip(y, -1, 1);
+//        z = FunctionalExtensionsKt.rangeClip(z, -1, 1);
 
         double leftFrontPower = x + y + z;
         double leftRearPower = -x + y + z;

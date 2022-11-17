@@ -27,6 +27,7 @@ import org.firstinspires.ftc.teamcode.drive.roadrunner.RobotConstantsAccessor.ba
 import org.firstinspires.ftc.teamcode.drive.roadrunner.RobotConstantsAccessor.encoderTicksToInches
 import org.firstinspires.ftc.teamcode.drive.roadrunner.RobotConstantsAccessor.headingPID
 import org.firstinspires.ftc.teamcode.drive.roadrunner.RobotConstantsAccessor.kA
+import org.firstinspires.ftc.teamcode.drive.roadrunner.RobotConstantsAccessor.kF
 import org.firstinspires.ftc.teamcode.drive.roadrunner.RobotConstantsAccessor.kStatic
 import org.firstinspires.ftc.teamcode.drive.roadrunner.RobotConstantsAccessor.kV
 import org.firstinspires.ftc.teamcode.drive.roadrunner.RobotConstantsAccessor.motorVelocityPID
@@ -34,20 +35,13 @@ import org.firstinspires.ftc.teamcode.drive.roadrunner.RobotConstantsAccessor.tr
 import org.firstinspires.ftc.teamcode.drive.roadrunner.RobotConstantsAccessor.translationalXPID
 import org.firstinspires.ftc.teamcode.drive.roadrunner.RobotConstantsAccessor.translationalYPID
 import org.firstinspires.ftc.teamcode.drive.roadrunner.constants.DriveConstantsThinBot.globalPoseEstimate
-import org.firstinspires.ftc.teamcode.library.functions.toDegrees
+
 import org.firstinspires.ftc.teamcode.drive.robotcore.IMUController
-import org.firstinspires.ftc.teamcode.library.robot.systems.drive.legacy.Holonomic
-import org.firstinspires.ftc.teamcode.library.robot.systems.drive.legacy.HolonomicImpl
-import org.firstinspires.ftc.teamcode.library.robot.systems.drive.roadrunner.RobotConstantsAccessor.encoderTicksToInches
-import org.firstinspires.ftc.teamcode.library.robot.systems.drive.roadrunner.RobotConstantsAccessor.headingPID
-import org.firstinspires.ftc.teamcode.library.robot.systems.drive.roadrunner.RobotConstantsAccessor.kA
-import org.firstinspires.ftc.teamcode.library.robot.systems.drive.roadrunner.RobotConstantsAccessor.kF
-import org.firstinspires.ftc.teamcode.library.robot.systems.drive.roadrunner.RobotConstantsAccessor.kStatic
-import org.firstinspires.ftc.teamcode.library.robot.systems.drive.roadrunner.RobotConstantsAccessor.kV
-import org.firstinspires.ftc.teamcode.library.robot.systems.drive.roadrunner.RobotConstantsAccessor.motorVelocityPID
-import org.firstinspires.ftc.teamcode.library.robot.systems.drive.roadrunner.RobotConstantsAccessor.runUsingEncoder
-import org.firstinspires.ftc.teamcode.library.robot.systems.drive.roadrunner.constants.DriveConstantsThinBot.globalPoseEstimate
-import org.firstinspires.ftc.teamcode.library.robot.systems.drive.roadrunner.support.DashboardUtil
+import org.firstinspires.ftc.teamcode.drive.robotcore.legacy.Holonomic
+import org.firstinspires.ftc.teamcode.drive.robotcore.legacy.HolonomicImpl
+
+
+import org.firstinspires.ftc.teamcode.toDegrees
 import org.firstinspires.ftc.teamcode.util.DashboardUtil
 import kotlin.math.absoluteValue
 
@@ -136,10 +130,10 @@ constructor (
         motorsExt.forEach {
             it.zeroPowerBehavior = DcMotor.ZeroPowerBehavior.BRAKE
             it.direction = DcMotorSimple.Direction.FORWARD
-            if (runUsingEncoder) {
-                it.mode = DcMotor.RunMode.RUN_USING_ENCODER
-                if (motorVelocityPID != null) setPIDCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, motorVelocityPID as PIDCoefficients)
-            }
+//            if (runUsingEncoder) {
+//                it.mode = DcMotor.RunMode.RUN_USING_ENCODER
+//                if (motorVelocityPID != null) setPIDCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, motorVelocityPID as PIDCoefficients)
+//            }
         }
     }
 

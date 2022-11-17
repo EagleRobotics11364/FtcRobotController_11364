@@ -4,10 +4,11 @@ import com.acmerobotics.roadrunner.control.PIDCoefficients
 import com.acmerobotics.roadrunner.geometry.Pose2d
 import com.acmerobotics.roadrunner.trajectory.constraints.DriveConstraints
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit
+import org.firstinspires.ftc.teamcode.convertUnit
 import org.firstinspires.ftc.teamcode.drive.roadrunner.constants.DriveConstantsThinBot
 import org.firstinspires.ftc.teamcode.drive.roadrunner.constants.OdometryConstants
-import org.firstinspires.ftc.teamcode.library.functions.convertUnit
-import org.firstinspires.ftc.teamcode.library.functions.toRadians
+
+import org.firstinspires.ftc.teamcode.toRadians
 import kotlin.math.absoluteValue
 
 

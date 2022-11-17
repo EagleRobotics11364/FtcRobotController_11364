@@ -2,7 +2,8 @@ package org.firstinspires.ftc.teamcode.drive.robotcore.legacy;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import org.firstinspires.ftc.teamcode.library.functions.Stoppable;
+import org.firstinspires.ftc.teamcode.Stoppable;
+
 
 public interface Holonomic extends Stoppable {
     /**
