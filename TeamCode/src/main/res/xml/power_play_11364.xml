@@ -10,7 +10,7 @@
 
 
 
-            <Servo name="gripServo" port="0"/>
+           <Servo name="gripServo" port="0"/>
 
         </LynxModule>
         <LynxModule name="Expansion Hub" port="2">
