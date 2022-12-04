@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.PowerPlay_MeetOpModes;
 
+import com.qualcomm.hardware.rev.RevBlinkinLedDriver;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -19,6 +20,8 @@ public class Beta_TeleOp extends LinearOpMode {
 
         DcMotorEx armExtension = hardwareMap.get(DcMotorEx.class, "armExtension");
         Servo gripServo = hardwareMap.get(Servo.class,"gripServo");
+
+        RevBlinkinLedDriver ledLights = hardwareMap.get(RevBlinkinLedDriver.class,"ledLights");
         double speed;
         armExtension.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         waitForStart();
@@ -45,22 +48,6 @@ public class Beta_TeleOp extends LinearOpMode {
 
 //            Arm Extension
             double value = gamepad2.right_stick_y;
-//            if(armExtension.getCurrentPosition() > 100) {
-//                if (value >= 0) {
-//                    armExtension.setPower((value * 0.5) + 0.15);
-//                } else {
-//                    armExtension.setPower((value * 0.2) + 0.1);
-//                }
-//            }
-//            else if(armExtension.getCurrentPosition() < 0) {
-//                if (value >= 0) {
-//                    armExtension.setPower((value * 0.5));
-//                } else {
-//                    armExtension.setPower((value * 0));
-//                }
-//            }
-
-
 
             if(armExtension.getCurrentPosition() > 100) {
                 if(value >= 0) {
@@ -78,32 +65,19 @@ public class Beta_TeleOp extends LinearOpMode {
                 armExtension.setPower(0.6);
             }
 
-
-            //Gripper
-//            if(gripServo.getPosition() > .1 && gamepad2.x) {
-//                gripServo.setPosition(0);
-//            } else if(gripServo.getPosition() < .05 && gamepad2.x) {
-//                gripServo.setPosition(0.15);
-//            }
-
-//            boolean changed = false;
-//            if (gamepad2.x && !changed) {
-//                if (gripServo.getPosition() < 0.01) {
-//                    gripServo.setPosition(.15);
-//                } else {
-//                    gripServo.setPosition(0);
-//                }
-//                changed = true;
-//            } else if (!gamepad2.x) {
-//                changed = false;
-//            }
-
             if(gamepad2.x) {
                 gripServo.setPosition(0.15);
             }
             if(gamepad2.b) {
                 gripServo.setPosition(0);
             }
+
+            if (armExtension.getCurrentPosition() > 150) {
+                ledLights.setPattern(RevBlinkinLedDriver.BlinkinPattern.RED);
+            } else if (armExtension.getCurrentPosition() < 150 && armExtension.getCurrentPosition() > -75) {
+                ledLights.setPattern(RevBlinkinLedDriver.BlinkinPattern.GREEN);
+            } else
+                ledLights.setPattern(RevBlinkinLedDriver.BlinkinPattern.STROBE_GOLD);
 
             telemetry.addData("Position: ",armExtension.getCurrentPosition());
             telemetry.addData("Servo Position: ",gripServo.getPosition());

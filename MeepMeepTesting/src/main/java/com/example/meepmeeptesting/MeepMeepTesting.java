@@ -17,7 +17,7 @@ public class MeepMeepTesting {
                                 .waitSeconds(1)
                                 .forward(25)
                                 .turn(Math.toRadians(45))
-                                .waitSeconds(1) //break
+                                .waitSeconds(3)
                                 .turn(Math.toRadians(45))
                                 .strafeRight(25)
                                 .forward(30)
