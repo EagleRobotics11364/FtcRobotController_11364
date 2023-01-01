@@ -38,13 +38,13 @@ public class Beta_TeleOp extends LinearOpMode {
 
             //Controller Input - Moves Drive Train
             double vertical = gamepad1.left_stick_y * speed;
-            double horizontal = -gamepad1.left_stick_x * speed; //Normal is negative
-            double pivot = -gamepad1.right_stick_x * speed; //Normal has negative
+            double horizontal = gamepad1.left_stick_x * speed;
+            double pivot = -gamepad1.right_stick_x * speed; //normal has negative
 
-            rightFrontMotor.setPower(pivot - vertical + horizontal);
-            leftFrontMotor.setPower(pivot + vertical + horizontal);
-            rightRearMotor.setPower(pivot - vertical - horizontal);
-            leftRearMotor.setPower(pivot + vertical - horizontal);
+            rightFrontMotor.setPower(-pivot + vertical + horizontal);
+            leftFrontMotor.setPower(-pivot - vertical + horizontal);
+            rightRearMotor.setPower(-pivot + vertical - horizontal);
+            leftRearMotor.setPower(-pivot - vertical - horizontal);
 
 //            Arm Extension
             double value = gamepad2.right_stick_y;
@@ -72,6 +72,7 @@ public class Beta_TeleOp extends LinearOpMode {
                 gripServo.setPosition(0);
             }
 
+            //LED Lights - Utilizes
             if (armExtension.getCurrentPosition() > 150) {
                 ledLights.setPattern(RevBlinkinLedDriver.BlinkinPattern.RED);
             } else if (armExtension.getCurrentPosition() < 150 && armExtension.getCurrentPosition() > -75) {

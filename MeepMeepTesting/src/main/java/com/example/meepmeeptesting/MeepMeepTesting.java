@@ -9,22 +9,40 @@ public class MeepMeepTesting {
     public static void main(String[] args) {
         MeepMeep meepMeep = new MeepMeep(800);
 
+
         RoadRunnerBotEntity myBot = new DefaultBotBuilder(meepMeep)
+
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
-                .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 15)
+                .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 13)
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(-34, -60, Math.toRadians(90)))
+                                //.UNSTABLE_addTemporalMarkerOffset(0.5, () -> gripServo.setPosition(.15))
                                 .waitSeconds(1)
-                                .forward(25)
+                                .forward(24)
                                 .turn(Math.toRadians(45))
-                                .waitSeconds(3)
-                                .turn(Math.toRadians(45))
-                                .strafeRight(25)
-                                .forward(30)
+                                .forward(5)
+
+//                               .UNSTABLE_addTemporalMarkerOffset(0, () -> armExtension.setMode(DcMotor.RunMode.RUN_TO_POSITION))
+//                                .UNSTABLE_addTemporalMarkerOffset(0.1, () -> armExtension.setTargetPosition(700))
+                                .waitSeconds(.5)
+
+                                .forward(5)
+//                                .UNSTABLE_addTemporalMarkerOffset(.5, () -> gripServo.setPosition(0.0))
                                 .waitSeconds(1)
-                                .back(10)
+
+                                .back(8)
+//                                .UNSTABLE_addTemporalMarkerOffset(5, () -> armExtension.setTargetPosition(0))
+                                .waitSeconds(1)
+
+                                .turn(Math.toRadians(45))
+                                .strafeRight(22.5)
+                                .forward(22.5)
+
+                                .waitSeconds(.5)
+
+                                .back(5)
                                 .turn(Math.toRadians(135))
-                                .waitSeconds(1)
+
                                 .build()
                 );
 
