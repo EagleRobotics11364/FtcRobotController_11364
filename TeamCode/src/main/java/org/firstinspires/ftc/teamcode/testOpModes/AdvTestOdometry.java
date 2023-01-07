@@ -30,27 +30,32 @@ public class AdvTestOdometry extends LinearOpMode {
             drive.setPoseEstimate(startPose);
 
             TrajectorySequence trajSeq = drive.trajectorySequenceBuilder(startPose)
-                    .UNSTABLE_addTemporalMarkerOffset(0.5, () -> gripServo.setPosition(.15))
+                    //.UNSTABLE_addTemporalMarkerOffset(0.5, () -> gripServo.setPosition(.15))
                     .waitSeconds(1)
-                    .forward(25)
-                    .turn(Math.toRadians(68.5))
+                    .forward(27)
+                    .turn(Math.toRadians(60))
                     .forward(5)
 
-                    .UNSTABLE_addTemporalMarkerOffset(1, () -> armExtension.setMode(DcMotor.RunMode.RUN_TO_POSITION))
-                    .UNSTABLE_addTemporalMarkerOffset(0, () -> armExtension.setTargetPosition(700))
-                    .waitSeconds(3)
+//                               .UNSTABLE_addTemporalMarkerOffset(0, () -> armExtension.setMode(DcMotor.RunMode.RUN_TO_POSITION))
+//                                .UNSTABLE_addTemporalMarkerOffset(0.1, () -> armExtension.setTargetPosition(700))
+                    .waitSeconds(.5)
 
-                    .forward(6)
-                    .UNSTABLE_addTemporalMarkerOffset(2.5, () -> gripServo.setPosition(0.0))
-                    .UNSTABLE_addTemporalMarkerOffset(5, () -> armExtension.setTargetPosition(0))
-                    .waitSeconds(5)
+                    .forward(5)
+//                                .UNSTABLE_addTemporalMarkerOffset(.5, () -> gripServo.setPosition(0.0))
+                    .waitSeconds(1)
 
-                    .back(10)
-                    .turn(Math.toRadians(55))
+                    .back(8)
+//                                .UNSTABLE_addTemporalMarkerOffset(5, () -> armExtension.setTargetPosition(0))
+                    .waitSeconds(1)
 
-                    .strafeRight(21)
-                    .forward(15)
+                    .turn(Math.toRadians(45))
+                    .strafeRight(22.5)
+                    .forward(22.5)
 
+                    .waitSeconds(.5)
+
+                    .back(5)
+                    .turn(Math.toRadians(135))
 
                     .build();
 
